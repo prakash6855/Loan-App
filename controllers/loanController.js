@@ -20,7 +20,7 @@ const createLoan = async (req, res) => {
 
     // Check if the user has an existing loan with a non-paid status
     const existingLoan = await Loan.findOne({
-      where: { userId, status: { [Op.ne]: "PAID" } },
+      where: { userId, status: { [Op.notIn]: ["PAID", "REJECTED"] } },
     });
     if (existingLoan) {
       return res.status(400).json({
@@ -81,7 +81,7 @@ const approveLoan = async (req, res) => {
       // Update the loan status to "REJECTED"
       await loan.update({ status: "REJECTED" }, { transaction: t });
       await t.commit();
-      res.status(200).json({ message: "Loan rejected successfully" });
+      return res.status(200).json({ message: "Loan rejected successfully" });
     }
 
     // Calculate weekly repayment amount

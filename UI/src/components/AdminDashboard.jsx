@@ -148,6 +148,11 @@ function AdminDashboard() {
 
   const columns = [
     {
+      title: "Loan ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
       title: "Total Amount",
       dataIndex: "totalAmount",
       key: "totalAmount",

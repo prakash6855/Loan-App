@@ -82,7 +82,11 @@ function UserDashboard() {
       }
     } catch (error) {
       console.error("Error requesting loan:", error);
-      message.error("Failed to request loan");
+      if (error.response && error.response.data) {
+        message.error(error.response.data.message);
+      } else {
+        message.error("Failed to request loan");
+      }
     }
   };
 
@@ -129,6 +133,11 @@ function UserDashboard() {
   };
 
   const columns = [
+    {
+      title: "Loan ID",
+      dataIndex: "id",
+      key: "id",
+    },
     {
       title: "Total Amount",
       dataIndex: "totalAmount",

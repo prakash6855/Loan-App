@@ -21,7 +21,11 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    const allowedOrigins = ["http://localhost:5173"];
+    console.log(origin);
+    const allowedOrigins = [
+      // "http://localhost:5173",
+      "https://dwdl1vlt-5173.inc1.devtunnels.ms",
+    ];
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
