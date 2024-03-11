@@ -1,5 +1,3 @@
-// index.js
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
@@ -9,6 +7,7 @@ if (result.error) {
 }
 const loanRoutes = require("./routes/loanRoutes");
 const userRoutes = require("./routes/userRoutes");
+const cors = require("cors");
 
 const app = express();
 const { PORT } = process.env;
@@ -16,6 +15,22 @@ const MySQL = require("./config/db");
 
 // Middleware
 app.use(bodyParser.json());
+
+// CORS configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    const allowedOrigins = ["http://localhost:5173"];
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/user/:userId/loan", loanRoutes);

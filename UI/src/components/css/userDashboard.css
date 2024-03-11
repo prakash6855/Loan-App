@@ -1,0 +1,52 @@
+.user-dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-dashboard .user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-dashboard h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .user-dashboard .ant-form {
+    margin-bottom: 20px;
+  }
+  
+  .user-dashboard .ant-table-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .user-dashboard .ant-table {
+    border-collapse: collapse;
+  }
+  
+  .user-dashboard .ant-table td,
+  .user-dashboard .ant-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .user-dashboard .ant-table thead th {
+    background-color: #f2f2f2;
+  }
+  
+  .user-dashboard .ant-tag {
+    font-size: 14px;
+  }
+  
+  .user-dashboard .ant-dropdown-button {
+    margin-bottom: 20px;
+  }
+  

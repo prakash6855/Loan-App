@@ -1,7 +1,9 @@
 const { DataTypes } = require("sequelize");
-const db = require("../config/db");
+const MySQL = require("../config/db");
+const Loan = require("./Loan");
+const sequelize = MySQL.sequelize;
 
-const Repayment = db.define(
+const Repayment = sequelize.define(
   "Repayment",
   {
     id: {
@@ -36,7 +38,7 @@ const Repayment = db.define(
     },
   },
   {
-    tableName: "Repayment", 
+    tableName: "Repayment",
     timestamps: true,
     paranoid: true,
     underscored: true,

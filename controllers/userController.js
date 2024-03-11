@@ -133,4 +133,43 @@ const adminLogin = async (req, res) => {
   }
 };
 
-module.exports = { createUser, userLogin, adminLogin };
+const userLogout = async (req, res) => {
+  try {
+    // Find the user by ID
+    const userId = req.params.userId;
+    const user = await User.findByPk(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Clear the session token
+    user.sessionToken = null;
+    await user.save();
+
+    res.status(200).json({ message: "User logged out successfully" });
+  } catch (error) {
+    console.error("Error logging out:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+const adminLogout = async (req, res) => {
+  try {
+    // Find the admin user
+    const user = await User.findOne({ where: { is_admin: true } });
+    if (!user) {
+      return res.status(404).json({ message: "Admin user not found" });
+    }
+
+    // Clear the session token
+    user.sessionToken = null;
+    await user.save();
+
+    res.status(200).json({ message: "Admin logged out successfully" });
+  } catch (error) {
+    console.error("Error logging out:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+module.exports = { createUser, userLogin, adminLogin, userLogout, adminLogout };

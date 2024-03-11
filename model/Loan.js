@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 const MySQL = require("../config/db");
+const User = require("./User");
+const Repayment = require("./Repayment");
 const sequelize = MySQL.sequelize;
 
 const Loan = sequelize.define(
@@ -40,11 +42,13 @@ const Loan = sequelize.define(
     },
   },
   {
-    tableName: "Loan", 
+    tableName: "Loan",
     timestamps: true,
     paranoid: true,
     underscored: true,
   }
 );
+Loan.belongsTo(User);
+Loan.hasMany(Repayment);
 
 module.exports = Loan;
