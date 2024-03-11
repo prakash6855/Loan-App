@@ -1,0 +1,25 @@
+.admin-dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-dashboard .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-dashboard h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .admin-dashboard .ant-dropdown-button {
+    margin-bottom: 20px;
+  }
+  
